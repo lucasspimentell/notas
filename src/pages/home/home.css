@@ -33,10 +33,7 @@ main{
     background-color: var(--background);
 }
 
-.note{
-    color: var();
-    
-}
+
 
 textarea{
     color: var(--texto);
