@@ -60,8 +60,9 @@ textarea{
 .note-content{
     flex: 1;
     background-color:var(--input);
-    border: 2px solid var(--borda);
+    border: 1px solid var(--borda);
     color: var(--texto);
+    
 }
 
 .add_button{
@@ -70,6 +71,7 @@ textarea{
     cursor: pointer;
     font-size: 20px;
     border: solid #141416;
+    
 }
 
 .meuSeletor{
@@ -194,5 +196,26 @@ textarea{
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    
+}
+
+@media (max-width: 450px) {
+    .add_notas{
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+
+    .notes_container{
+    
+    grid-template-columns: repeat(auto-fill,100%);
+   
+
+}
+
+.tema{
+    width: 30px;
+    height: 30px;
+}
     
 }
