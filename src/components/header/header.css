@@ -1,0 +1,64 @@
+:root{
+    --texto: #fff;
+    --backgroundBtn:#525356;
+    --input:#333;
+    --background:#202124;
+    --borda:#525356;
+}
+
+[data-tema="claro"]{
+    --texto:#202124;
+    --backgroundBtn:#fff;
+    --input:#efe1e1;
+    --background:#fff;
+    --borda:#202124;
+   
+
+}
+
+header{
+    border-bottom: 1px solid var(--borda);
+    padding: 1rem 2rem;
+    color:var(--texto);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.search_container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 100px;
+}
+
+.search_input{
+    background-color: var(--backgroundBtn);
+    border-radius: 5px;
+    border: 1px solid var(--borda);
+    padding: 7px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--texto);
+    width: 200px;
+    min-width: 100px;
+}
+
+.search_input::placeholder{
+    color: var(--texto);
+}
+
+.export{
+    background-color: var(--backgroundBtn); 
+    border: 2px solid var(--texto);
+    border-radius: 4px;
+    color: var(--branco);
+    padding: 5px 15px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.export:hover{
+    
+    scale: 1.1;
+}

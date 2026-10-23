@@ -1,0 +1,201 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+
+}
+:root{
+    --texto: #fff;
+    --backgroundBtn:#525356;
+    --input:#333;
+    --background:#202124;
+    --borda:#525356;
+}
+
+[data-tema="claro"]{
+    --texto:#202124;
+    --backgroundBtn:#fff;
+    --input:#f7f2f2;
+    --background:#fff;
+    --borda:#202124;
+   
+
+}
+
+
+
+body{
+    background-color: var(--background);
+}
+
+main{
+    background-color: var(--background);
+}
+
+.note{
+    color: var();
+    
+}
+
+textarea{
+    color: var(--texto);
+    background-color: transparent;
+    resize: none;
+    border: none;
+    outline: none;
+    height: 100%;
+}
+
+.add_notas{
+    display: flex;
+    width: 400px;
+    margin: 1rem auto 0;
+    
+    
+}
+
+.note-content,.add_button{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.note-content{
+    flex: 1;
+    background-color:var(--input);
+    border: 2px solid var(--borda);
+    color: var(--texto);
+}
+
+.add_button{
+    background-color: var(--borda);
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    border: solid #141416;
+}
+
+.meuSeletor{
+    width: 25px;
+
+}
+
+.notes_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,250px);
+    padding: 2rem;
+    gap: 2rem;
+
+}
+
+.note{
+    min-height: 200px;
+    padding: 1rem;
+    border: 1px solid var(--borda);
+    background-color: var(--background);
+    border-radius:10px ;
+    color: var(--texto);
+    position: relative;
+}
+
+.note .bi-pin-fill{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--texto);
+}
+
+.note .bi-x-lg,
+.note .bi-files, .note .meuSeletor{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: 0.3s;
+    color: var(--texto);
+    cursor: pointer;
+    opacity: 0;
+}
+
+.cores{
+    width: 10px;
+    padding: 6px;
+    border-radius: 100%;
+    border: 1px solid var(--borda);
+    cursor: pointer;
+    
+}
+.cores_container{
+    position: absolute;
+    right: 4px;
+    transition: 0.3s;
+    cursor: pointer;
+    top: 70px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 20px;
+    height: 65%;
+    opacity: 0;
+}
+
+.note:hover > i,.note:hover > .meuSeletor, .note:hover>.cores_container{
+    opacity: 1;
+}
+
+
+
+.note .bi-files{
+    top: 40px;
+}
+
+.note .meuSeletor{
+    top:80px
+}
+
+.note .bi-x-lg:hover,
+.note .bi-files:hover{
+    color: var(--branco);
+}
+
+
+.azul{
+    background-color: #50b6e5;
+}
+
+.amarelo{
+    background-color: #feb90a;
+}
+
+.verde{
+    background-color: #3ee866;
+}
+
+.rosa{
+    background-color: #f75c97;
+}
+
+
+
+.fixa{
+    
+    border: 3px solid #141416;
+    box-shadow: 3px 3px 0px  rgb(0, 0, 0);
+}
+
+.tema{
+    background-color:var(--texto);
+   
+    color: var(--background);
+    font-size: 18px;
+    border: 2px solid var(--borda);
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+}
