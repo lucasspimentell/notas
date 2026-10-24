@@ -159,7 +159,7 @@ export function Home(){
       }
 
       const notasFilter = notas.filter((item)=>
-    item.titulo.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+    (item.titulo??"").toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
 
       const amarelo =(id:number)=>{
         const mudarCor = notas.map((item)=>{
