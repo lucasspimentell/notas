@@ -135,8 +135,9 @@ textarea{
     display: flex;
     flex-direction: column;
     width: 20px;
-    height: 65%;
+    height: 0;
     opacity: 0;
+    background-color: #3ee866;
 }
 
 .note:hover > i,.note:hover > .meuSeletor, .note:hover>.cores_container{
@@ -198,6 +199,31 @@ textarea{
     border-radius: 50%;
     
 }
+
+.conteudo{
+    padding-top: 3px;
+    width: 95%;
+    
+}
+.conteudo:hover{
+ border-top: 1px solid var(--borda);
+}
+
+.inputTitulo{
+    word-wrap:break-word;
+    background-color: transparent;
+    
+    width: 95%;
+    
+    padding-bottom: 3px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--texto);
+}
+
+
 
 @media (max-width: 450px) {
     .add_notas{

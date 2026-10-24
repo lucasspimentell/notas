@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useOutletContext } from 'react-router';
 import './home.css';
 
 type Nota ={
     id:number,
+    titulo:string,
     content:string,
     fixed:boolean,
     cor:string
@@ -16,6 +17,7 @@ interface ContextType{
 
 
 export function Home(){
+    const inputRef = useRef<HTMLTextAreaElement>(null)
     const { searchTerm} = useOutletContext<ContextType>();
     const [temas,setTemas] = useState<string>(()=>{return localStorage.getItem("@tema")||""})
     
@@ -48,7 +50,7 @@ export function Home(){
     });
 
     const [ input,setInput]=useState("");
-   
+    const [titulo,setTitulo] =useState("");
 
 
 
@@ -61,12 +63,13 @@ export function Home(){
    
     
     const notasAdd = () =>{
-        if(input==""){
+        if(titulo==""){
             alert("adicione um texto")
             return
         }
         const noteObjet:Nota={
             id:Date.now(),
+            titulo:titulo,
             content:input,
             fixed:false,
             cor:""
@@ -74,7 +77,8 @@ export function Home(){
         }
         
         setNotas([...notas,noteObjet])
-        setInput("");
+        setTitulo("");
+        setInput("")
         
     }
     
@@ -114,6 +118,7 @@ export function Home(){
 
         const copiaObj ={
             id:Date.now(),
+            titulo:titulo,
             content:listaCopia.content,
             fixed:false,
             cor:""
@@ -125,6 +130,7 @@ export function Home(){
       }
 
       const editando =(id:number,texto:string)=>{
+        inputRef.current?.focus()
         const listaEditada = notas.map((item)=>{
             if (item.id === id){
 
@@ -138,8 +144,22 @@ export function Home(){
         
       }
 
+       const editandoTitulo = (id:number,titulo:string) =>{
+
+        const listaEditada = notas.map((item)=>{
+            if (item.id === id){
+
+                return{...item,titulo:titulo}
+            }
+            return item
+        })
+
+        setNotas(listaEditada);
+        
+      }
+
       const notasFilter = notas.filter((item)=>
-    item.content.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
+    item.titulo.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()))
 
       const amarelo =(id:number)=>{
         const mudarCor = notas.map((item)=>{
@@ -204,6 +224,8 @@ export function Home(){
       const tema = () =>{
             setTemas(atual =>(atual === "claro" ? "" : "claro"))
       }
+
+     
     
 
 
@@ -212,7 +234,7 @@ export function Home(){
                 <button className='tema' onClick={()=>{tema()}}><i className="bi bi-lightbulb-fill"></i></button>
             <section className='add_notas'>
 
-            <input type="text"  className='note-content' placeholder='O que deseja anotar?' value={input} onChange={(e)=>setInput(e.target.value)}/>
+            <input type="text"  className='note-content' placeholder='O que deseja anotar?' value={titulo} onChange={(e)=>setTitulo(e.target.value)}/>
 
             
 
@@ -224,7 +246,9 @@ export function Home(){
             {notasFilter.map((item)=>(
 
                 <div className={`note ${item.fixed ? "fixa":""} ${item.cor} `}   key={item.id}>
-                <textarea placeholder='Adicione algum texto'   value={item.content} onChange={(e)=>editando(item.id,e.target.value)}>
+                <input className='inputTitulo' value={item.titulo} onChange={(e)=>editandoTitulo(item.id,e.target.value)}/>
+                <textarea className='conteudo' placeholder='Adicione algum texto'   value={item.content} onChange={(e)=>editando(item.id,e.target.value)} ref={inputRef}>
+                    
                 </textarea>
                 <div className='cores_container'>
                 <button  className={`cores amarelo`} onClick={()=>{amarelo(item.id)}}></button>

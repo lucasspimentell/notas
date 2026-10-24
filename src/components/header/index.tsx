@@ -9,6 +9,7 @@ interface HeaderProps{
 
 type Nota ={
     id:number,
+    titulo:string,
     content:string,
     fixed:boolean
 }
@@ -23,8 +24,8 @@ export function Header({searchTerm,onSearchTerm}:HeaderProps){
               const notas = JSON.parse(notasSalvas) as Nota[]
 
             const csv = [
-                ["ID","CONTEUDO","FIXED"],
-                ...notas.map((nota)=>[nota.id,nota.content,nota.fixed])
+                ["ID","TITULO","CONTEUDO","FIXED"],
+                ...notas.map((nota)=>[nota.id,nota.titulo,nota.content,nota.fixed])
             ].map((e)=>e.join(",")).join("\n")
 
             console.log(csv)
