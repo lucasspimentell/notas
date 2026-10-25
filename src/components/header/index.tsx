@@ -49,10 +49,10 @@ export function Header({searchTerm,onSearchTerm}:HeaderProps){
 
     return(
         <header>
-            <h1>Notas</h1>
+            <h1>Post-it Web</h1>
             <div className='search_container'>
                 <i className='bi bi-search'></i>
-                <input type="text" placeholder='Buscar uma nota'  className='search_input'
+                <input type="text" placeholder='Buscar'  className='search_input'
                 value={searchTerm}
                 onChange={(e)=>onSearchTerm(e.target.value)}
                 />

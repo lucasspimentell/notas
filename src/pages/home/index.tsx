@@ -234,7 +234,7 @@ export function Home(){
                 <button className='tema' onClick={()=>{tema()}}><i className="bi bi-lightbulb-fill"></i></button>
             <section className='add_notas'>
 
-            <input type="text"  className='note-content' placeholder='O que deseja anotar?' value={titulo} onChange={(e)=>setTitulo(e.target.value)}/>
+            <input type="text"  className='note-content' placeholder='criar post-it ' value={titulo} onChange={(e)=>setTitulo(e.target.value)}/>
 
             
 
