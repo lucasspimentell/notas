@@ -130,7 +130,7 @@ export function Home(){
       }
 
       const editando =(id:number,texto:string)=>{
-        inputRef.current?.focus()
+        /* inputRef.current?.focus() */
         const listaEditada = notas.map((item)=>{
             if (item.id === id){
 
