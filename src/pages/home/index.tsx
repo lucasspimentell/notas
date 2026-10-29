@@ -82,7 +82,7 @@ export function Home(){
             fixed:false,
             cor:"",
             btnFont:false,
-            font:""
+            font:"helvetica"
 
             
         }
@@ -134,7 +134,7 @@ export function Home(){
             fixed:false,
             cor:"",
             btnFont:false,
-            font:""
+            font:"helvetica"
             
         }
 
@@ -341,7 +341,7 @@ export function Home(){
                      </i>   
                     <div className={`font_container ${item.btnFont ? "mostrar":"esconder"}`}>
                         
-                        <button className={`cardo ${item.font == "cardo" ? "font_selecionada" :""}`}  onClick={()=>cardo(item.id)}>I</button>
+                        <button className={`cardo ${item.font == "cardo" ? "font_selecionada" :""}`}  onClick={()=>cardo(item.id)}>N</button>
                         <button className={`caveat ${item.font == "caveat" ? "font_selecionada" :""}`}onClick={()=>caveat(item.id)} >C</button>
                         <button className={`helvetica ${item.font == "helvetica" ? "font_selecionada" :""}`}onClick={()=>helvetica(item.id)}>H</button>
                     </div>
