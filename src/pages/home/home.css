@@ -140,7 +140,51 @@ textarea{
     background-color: #3ee866;
 }
 
-.note:hover > i,.note:hover > .meuSeletor, .note:hover>.cores_container{
+.container_fonts{
+position: absolute;
+    top: 163px;
+    right: 8px;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100px;
+    gap: 10px;
+}
+
+.bi-file-font{
+    
+    
+    
+    font-size: 20px;
+    
+    
+}
+.container_fonts{
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.font_container{
+    display: flex;
+    gap: 5px;
+    transition: 0.4s;
+    
+}
+
+.font_container button{
+    border: none;
+    padding: 3px;
+    background-color: rgb(227, 232, 237);
+    border-radius: 4px;
+    
+    
+}
+
+.font_selecionada{
+    border:2px solid #0b0b0b !important;
+    background-color: #fff;
+}
+
+.note:hover > i,.note:hover > .meuSeletor, .note:hover>.cores_container, .note:hover>.font_container button,.note:hover>.container_fonts{
     opacity: 1;
 }
 
@@ -222,6 +266,31 @@ textarea{
     font-size: 16px;
     color: var(--texto);
 }
+
+.mostrar{
+    opacity: 1;
+}
+
+.esconder{
+    opacity: 0;
+}
+
+.caveat{
+     font-family: "Caveat", cursive;
+}
+
+.cardo{
+    font-family: "Cardo", serif;
+   
+}
+
+.helvetica{
+    font-family: Helvetica;
+    
+}
+
+
+
 
 
 

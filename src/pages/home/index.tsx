@@ -7,7 +7,9 @@ type Nota ={
     titulo:string,
     content:string,
     fixed:boolean,
-    cor:string
+    cor:string,
+    btnFont:boolean,
+    font:string
     
 } 
 
@@ -20,7 +22,7 @@ export function Home(){
     const inputRef = useRef<HTMLTextAreaElement>(null)
     const { searchTerm} = useOutletContext<ContextType>();
     const [temas,setTemas] = useState<string>(()=>{return localStorage.getItem("@tema")||""})
-    
+   
 
     useEffect(()=>{
         localStorage.setItem("@tema",temas)
@@ -42,7 +44,13 @@ export function Home(){
 
         const notasSalvas = localStorage.getItem("@notas")
         if (notasSalvas) {
-            return (JSON.parse(notasSalvas) as Nota[])
+            const notasParse = JSON.parse(notasSalvas) as Nota[]
+
+            const notaAtualizada = notasParse.map((item)=>{
+                return{...item,btnFont:false}
+            })
+
+            return notaAtualizada
         }
         
         return []
@@ -72,7 +80,10 @@ export function Home(){
             titulo:titulo,
             content:input,
             fixed:false,
-            cor:""
+            cor:"",
+            btnFont:false,
+            font:""
+
             
         }
         
@@ -121,7 +132,9 @@ export function Home(){
             titulo:titulo,
             content:listaCopia.content,
             fixed:false,
-            cor:""
+            cor:"",
+            btnFont:false,
+            font:""
             
         }
 
@@ -221,13 +234,69 @@ export function Home(){
 
       }
 
+      const cardo =(id:number)=>{
+        const mudarFont = notas.map((item)=>{
+            
+            if(item.id==id){
+                return{...item,font:"cardo"}
+            }
+            return item
+        
+        })
+
+        setNotas(mudarFont)
+
+
+      }
+
+   
+      const caveat =(id:number)=>{
+        const mudarFont = notas.map((item)=>{
+            
+            if(item.id==id){
+                return{...item,font:"caveat"}
+            }
+            return item
+        
+        })
+
+        setNotas(mudarFont)
+
+
+      }
+
+      const helvetica =(id:number)=>{
+        const mudarFont = notas.map((item)=>{
+            
+            if(item.id==id){
+                return{...item,font:"helvetica"}
+            }
+            return item
+        
+        })
+
+        setNotas(mudarFont)
+
+
+      }
+
       const tema = () =>{
             setTemas(atual =>(atual === "claro" ? "" : "claro"))
       }
 
-     
-    
+    const mostrar = (id:number,font:boolean) =>{
+        const mudarFont = notas.map((item)=>{
+             if (item.id == id ) {
+            return{...item,btnFont:!font}
+        }
+        return item
+        })
 
+        setNotas(mudarFont)
+        console.log(notas)
+    } 
+  
+    
 
     return(
         <main>
@@ -246,8 +315,8 @@ export function Home(){
             {notasFilter.map((item)=>(
 
                 <div className={`note ${item.fixed ? "fixa":""} ${item.cor} `}   key={item.id}>
-                <input className='inputTitulo' value={item.titulo} onChange={(e)=>editandoTitulo(item.id,e.target.value)}/>
-                <textarea className='conteudo' placeholder='Adicione algum texto'   value={item.content} onChange={(e)=>editando(item.id,e.target.value)} ref={inputRef}>
+                <input className={`inputTitulo ${item.font}`} value={item.titulo} onChange={(e)=>editandoTitulo(item.id,e.target.value)}/>
+                <textarea className={`conteudo ${item.font}` }placeholder='Adicione algum texto'   value={item.content} onChange={(e)=>editando(item.id,e.target.value)} ref={inputRef}>
                     
                 </textarea>
                 <div className='cores_container'>
@@ -265,6 +334,18 @@ export function Home(){
                     <i className="bi bi-files" onClick={()=>{
                         copiar(item.id)}}></i>
 
+
+                     <div className='container_fonts'>
+                        <i className='bi bi-file-font' onClick={()=>{mostrar(item.id,item.btnFont)}}>
+                        
+                     </i>   
+                    <div className={`font_container ${item.btnFont ? "mostrar":"esconder"}`}>
+                        
+                        <button className={`cardo ${item.font == "cardo" ? "font_selecionada" :""}`}  onClick={()=>cardo(item.id)}>I</button>
+                        <button className={`caveat ${item.font == "caveat" ? "font_selecionada" :""}`}onClick={()=>caveat(item.id)} >C</button>
+                        <button className={`helvetica ${item.font == "helvetica" ? "font_selecionada" :""}`}onClick={()=>helvetica(item.id)}>H</button>
+                    </div>
+                     </div>
             </div>
 
 
